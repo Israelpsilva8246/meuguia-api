@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: meu-guia-api
+  datasource:
+    url: jdbc:postgresql://localhost:5432/attractiondb
+    username: postgres
+    password: postgres
+    initialization-mode: always
+  jpa:
+    show-sql: false
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: false
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+        dialect: org.hibernate.dialect.PostgreSQLDialect
