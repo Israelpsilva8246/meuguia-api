@@ -28,6 +28,8 @@ public class TuristAttractionDTO {
 
     private String image_link;
 
+    private String fonte;
+
     private List<TurismSegmentation> segmentations;
 
     private AttractionType attractionTypes;
@@ -45,13 +47,13 @@ public class TuristAttractionDTO {
         this.city = obj.getCity();
         this.state = obj.getState();
         this.image_link = obj.getImage_link();
+        this.fonte = obj.getFonte();
         this.segmentations = obj.getSegmentations();
         this.attractionTypes = obj.getAttractionTypes();
         this.moreInfoLinkList = obj.getMoreInfoLinkList();
     }
 
-    public TuristAttractionDTO(Long id, String name, String description, String map_link, String city, String state,
-                               String image_link, List<TurismSegmentation> segmentations, AttractionType attractionTypes, List<MoreInfoLink> moreInfoLinkList) {
+    public TuristAttractionDTO(Long id, String name, String description, String map_link, String city, String state, String image_link, String fonte, List<TurismSegmentation> segmentations, AttractionType attractionTypes, List<MoreInfoLink> moreInfoLinkList) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -59,6 +61,7 @@ public class TuristAttractionDTO {
         this.city = city;
         this.state = state;
         this.image_link = image_link;
+        this.fonte = fonte;
         this.segmentations = segmentations;
         this.attractionTypes = attractionTypes;
         this.moreInfoLinkList = moreInfoLinkList;

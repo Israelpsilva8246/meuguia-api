@@ -32,6 +32,9 @@ public class Attraction {
     @Column(length = 500, nullable = false)
     private String image_link;
 
+    @Column(length = 300, nullable = false)
+    private String fonte;
+
     @OneToMany
     @JoinColumn(name = "attraction_id")
     private List<TurismSegmentation> segmentations;
@@ -46,15 +49,15 @@ public class Attraction {
     public Attraction() {
     }
 
-    public Attraction(Long id, String name, String description, String mapLink, String city, String state,
-                      String imageLink, List<TurismSegmentation> segmentations, AttractionType attractionTypes, List<MoreInfoLink> moreInfoLinkList) {
+    public Attraction(Long id, String name, String description, String map_link, String city, String state, String image_link, String fonte, List<TurismSegmentation> segmentations, AttractionType attractionTypes, List<MoreInfoLink> moreInfoLinkList) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.map_link = mapLink;
+        this.map_link = map_link;
         this.city = city;
         this.state = state;
-        this.image_link = imageLink;
+        this.image_link = image_link;
+        this.fonte = fonte;
         this.segmentations = segmentations;
         this.attractionTypes = attractionTypes;
         this.moreInfoLinkList = moreInfoLinkList;
