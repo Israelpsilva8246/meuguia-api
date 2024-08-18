@@ -7,8 +7,11 @@ import com.ufpb.meuguiaapi.repository.TurismSegmentationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class TurismSegmentationService {
@@ -25,7 +28,16 @@ public class TurismSegmentationService {
     }
 
     public List<TurismSegmentation> findAll() {
-        return turismSegmentationRepository.findAll();
+        List<TurismSegmentation> segmentations = turismSegmentationRepository.findAll();
+
+        // Filtra para manter apenas as segmentações com nomes únicos
+        return new ArrayList<>(segmentations.stream()
+                .collect(Collectors.toMap(
+                        TurismSegmentation::getName,  // Usa o nome como chave
+                        Function.identity(),          // Usa o próprio objeto TurismSegmentation como valor
+                        (existing, replacement) -> existing // Em caso de duplicata, mantém o existente
+                ))
+                .values());
     }
 
     public TurismSegmentation create(Long id_att, TurismSegmentation obj) {
