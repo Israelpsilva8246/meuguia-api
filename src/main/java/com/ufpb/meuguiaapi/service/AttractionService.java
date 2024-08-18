@@ -1,6 +1,7 @@
 package com.ufpb.meuguiaapi.service;
 
 import com.ufpb.meuguiaapi.domain.Attraction;
+import com.ufpb.meuguiaapi.dtos.TuristAttractionDTO;
 import com.ufpb.meuguiaapi.exception.ObjectNotFoundException;
 import com.ufpb.meuguiaapi.repository.AttractionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +50,17 @@ public class AttractionService {
     public void delete(Long id) {
         findById(id);
         turistAttractionRepository.deleteById(id);
+    }
+
+    public Attraction update(Long id, TuristAttractionDTO objDto) {
+        Attraction obj = findById(id);
+        obj.setName(objDto.getName());
+        obj.setDescription(objDto.getDescription());
+        obj.setMap_link(objDto.getMap_link());
+        obj.setCity(objDto.getCity());
+        obj.setState(objDto.getState());
+        obj.setImage_link(objDto.getImage_link());
+        obj.setFonte(objDto.getFonte());
+        return turistAttractionRepository.save(obj);
     }
 }

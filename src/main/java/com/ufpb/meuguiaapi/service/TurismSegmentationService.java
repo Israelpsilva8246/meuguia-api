@@ -1,5 +1,6 @@
 package com.ufpb.meuguiaapi.service;
 
+import com.ufpb.meuguiaapi.domain.Attraction;
 import com.ufpb.meuguiaapi.domain.TurismSegmentation;
 import com.ufpb.meuguiaapi.exception.ObjectNotFoundException;
 import com.ufpb.meuguiaapi.repository.TurismSegmentationRepository;
@@ -15,6 +16,9 @@ public class TurismSegmentationService {
     @Autowired
     private TurismSegmentationRepository turismSegmentationRepository;
 
+    @Autowired
+    private AttractionService attractionService;
+
     public TurismSegmentation findById(Long id) {
         Optional<TurismSegmentation> obj = turismSegmentationRepository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! id: " + id + ", Tipo " + TurismSegmentation.class.getName()));
@@ -24,8 +28,10 @@ public class TurismSegmentationService {
         return turismSegmentationRepository.findAll();
     }
 
-    public TurismSegmentation create(TurismSegmentation obj) {
+    public TurismSegmentation create(Long id_att, TurismSegmentation obj) {
         obj.setId(null);
+        Attraction att = attractionService.findById(id_att);
+        obj.setAttraction(att);
         return turismSegmentationRepository.save(obj);
     }
 

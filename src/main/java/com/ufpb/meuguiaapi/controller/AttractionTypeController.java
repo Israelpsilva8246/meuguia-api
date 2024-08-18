@@ -1,6 +1,7 @@
 package com.ufpb.meuguiaapi.controller;
 
 import com.ufpb.meuguiaapi.domain.AttractionType;
+import com.ufpb.meuguiaapi.domain.MoreInfoLink;
 import com.ufpb.meuguiaapi.dtos.TuristAttractionDTO;
 import com.ufpb.meuguiaapi.service.AttractionTypeService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -39,8 +40,9 @@ public class AttractionTypeController {
             }
     )
     @PostMapping
-    public ResponseEntity<AttractionType> create(@RequestBody AttractionType obj) {
-        AttractionType newObj = attractionTypeService.create(obj);
+    public ResponseEntity<AttractionType> create(@RequestParam(value = "attraction", defaultValue = "0") Long id_att,
+                                                 @RequestBody AttractionType obj) {
+        AttractionType newObj = attractionTypeService.create(id_att, obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/types/{id}")
                 .buildAndExpand(newObj.getId()).toUri();

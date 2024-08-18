@@ -174,4 +174,10 @@ public class AttractionController {
         List<Attraction> list = attractionService.findByType(attractionTypes);
         return ResponseEntity.ok().body(list);
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<TuristAttractionDTO> update(@PathVariable Long id, @RequestBody TuristAttractionDTO objDto) {
+        Attraction newObj = attractionService.update(id, objDto);
+        return ResponseEntity.ok().body(new TuristAttractionDTO(newObj));
+    }
 }

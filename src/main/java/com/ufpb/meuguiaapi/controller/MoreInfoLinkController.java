@@ -1,6 +1,7 @@
 package com.ufpb.meuguiaapi.controller;
 
 import com.ufpb.meuguiaapi.domain.MoreInfoLink;
+import com.ufpb.meuguiaapi.domain.TurismSegmentation;
 import com.ufpb.meuguiaapi.dtos.TuristAttractionDTO;
 import com.ufpb.meuguiaapi.service.MoreInfoLinkService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -77,8 +78,9 @@ public class MoreInfoLinkController {
             }
     )
     @PostMapping
-    public ResponseEntity<MoreInfoLink> create(@RequestBody MoreInfoLink obj) {
-        MoreInfoLink newObj = moreInfoLinkService.create(obj);
+    public ResponseEntity<MoreInfoLink> create(@RequestParam(value = "attraction", defaultValue = "0") Long id_att,
+                                               @RequestBody MoreInfoLink obj) {
+        MoreInfoLink newObj = moreInfoLinkService.create(id_att, obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/more-info/{id}")
                 .buildAndExpand(newObj.getId()).toUri();

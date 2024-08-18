@@ -2,6 +2,7 @@ package com.ufpb.meuguiaapi.service;
 
 import com.ufpb.meuguiaapi.domain.Attraction;
 import com.ufpb.meuguiaapi.domain.AttractionType;
+import com.ufpb.meuguiaapi.domain.MoreInfoLink;
 import com.ufpb.meuguiaapi.exception.ObjectNotFoundException;
 import com.ufpb.meuguiaapi.repository.AttractionTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,13 @@ public class AttractionTypeService {
     @Autowired
     private AttractionTypeRepository attractionTypeRepository;
 
-    public AttractionType create(AttractionType obj) {
+    @Autowired
+    private AttractionService attractionService;
+
+    public AttractionType create(Long id_att, AttractionType obj) {
         obj.setId(null);
+        Attraction att = attractionService.findById(id_att);
+        obj.setAttraction(att);
         return attractionTypeRepository.save(obj);
     }
 

@@ -78,8 +78,9 @@ public class TurismSegmentationController {
             }
     )
     @PostMapping
-    public ResponseEntity<TurismSegmentation> create(@RequestBody TurismSegmentation obj) {
-        TurismSegmentation newObj = turismSegmentationService.create(obj);
+    public ResponseEntity<TurismSegmentation> create(@RequestParam(value = "attraction", defaultValue = "0") Long id_att,
+                                                     @RequestBody TurismSegmentation obj) {
+        TurismSegmentation newObj = turismSegmentationService.create(id_att, obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/segmentations/{id}")
                 .buildAndExpand(newObj.getId()).toUri();

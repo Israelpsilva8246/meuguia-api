@@ -3,6 +3,7 @@ package com.ufpb.meuguiaapi.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -35,16 +36,14 @@ public class Attraction {
     @Column(length = 300, nullable = false)
     private String fonte;
 
-    @OneToMany
-    @JoinColumn(name = "attraction_id")
-    private List<TurismSegmentation> segmentations;
+    @OneToMany(mappedBy = "attraction")
+    private List<TurismSegmentation> segmentations = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(mappedBy = "attraction")
     private AttractionType attractionTypes;
 
-    @OneToMany
-    @JoinColumn(name = "attraction_id")
-    private List<MoreInfoLink> moreInfoLinkList;
+    @OneToMany(mappedBy = "attraction")
+    private List<MoreInfoLink> moreInfoLinkList = new ArrayList<>();
 
     public Attraction() {
     }
@@ -58,8 +57,5 @@ public class Attraction {
         this.state = state;
         this.image_link = image_link;
         this.fonte = fonte;
-        this.segmentations = segmentations;
-        this.attractionTypes = attractionTypes;
-        this.moreInfoLinkList = moreInfoLinkList;
     }
 }
