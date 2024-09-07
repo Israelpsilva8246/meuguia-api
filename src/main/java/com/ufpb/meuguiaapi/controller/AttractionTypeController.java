@@ -1,7 +1,6 @@
 package com.ufpb.meuguiaapi.controller;
 
 import com.ufpb.meuguiaapi.domain.AttractionType;
-import com.ufpb.meuguiaapi.domain.MoreInfoLink;
 import com.ufpb.meuguiaapi.dtos.TuristAttractionDTO;
 import com.ufpb.meuguiaapi.service.AttractionTypeService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -11,7 +10,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
-import org.springframework.http.MediaType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -25,11 +25,12 @@ import java.util.List;
 @Tag(name = "Attractions Types", description = "Endpoints para gerenciar tipos de atrativos")
 public class AttractionTypeController {
 
+    private static final Logger logger = LoggerFactory.getLogger(AttractionTypeController.class);
 
     private AttractionTypeService attractionTypeService;
 
     @Operation(summary = "Cadastro de tipos de atrativos",
-            description = "Cadastra um um tipo de atrativo",
+            description = "Cadastra um tipo de atrativo",
             tags = {"Attractions Types"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "201",
@@ -41,11 +42,13 @@ public class AttractionTypeController {
     )
     @PostMapping
     public ResponseEntity<AttractionType> create(@RequestBody AttractionType obj) {
+        logger.info("Criando novo tipo de atrativo: {}", obj);
         AttractionType newObj = attractionTypeService.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/types/{id}")
                 .buildAndExpand(newObj.getId()).toUri();
-        return ResponseEntity.created(uri).body(obj);
+        logger.info("Tipo de atrativo criado com sucesso: {}", newObj);
+        return ResponseEntity.created(uri).body(newObj);
     }
 
     @DeleteMapping(value = "/{id}")
@@ -60,12 +63,14 @@ public class AttractionTypeController {
             }
     )
     public ResponseEntity<Void> delete(@PathVariable Long id) {
+        logger.info("Deletando tipo de atrativo com ID: {}", id);
         attractionTypeService.delete(id);
+        logger.info("Tipo de atrativo deletado com sucesso");
         return ResponseEntity.noContent().build();
     }
 
-    @Operation(summary = "Listagem de todos os tipos de atrativos", description = "Lista todos os tipos de atrativos atrativos",
-            tags = {"Attractions"},
+    @Operation(summary = "Listagem de todos os tipos de atrativos", description = "Lista todos os tipos de atrativos",
+            tags = {"Attractions Types"},
             responses = {
                     @ApiResponse(description = "Success", responseCode = "200",
                             content = {
@@ -81,8 +86,9 @@ public class AttractionTypeController {
     )
     @GetMapping
     public ResponseEntity<List<AttractionType>> findAll() {
+        logger.info("Buscando todos os tipos de atrativos");
         List<AttractionType> list = attractionTypeService.findAll();
+        logger.info("Tipos de atrativos encontrados: {}", list.size());
         return ResponseEntity.ok().body(list);
     }
-
 }
