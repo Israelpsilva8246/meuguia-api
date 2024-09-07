@@ -1,6 +1,6 @@
 package com.ufpb.meuguiaapi.dtos;
 
-import com.ufpb.meuguiaapi.domain.TurismSegmentation;
+import com.ufpb.meuguiaapi.domain.TouristSegmentation;
 import lombok.Data;
 
 @Data
@@ -15,7 +15,7 @@ public class TurismSegmentationDTO {
     public TurismSegmentationDTO() {
     }
 
-    public TurismSegmentationDTO(TurismSegmentation obj) {
+    public TurismSegmentationDTO(TouristSegmentation obj) {
         this.id = obj.getId();
         this.name = obj.getName();
         this.description = obj.getDescription();

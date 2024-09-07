@@ -3,12 +3,9 @@ package com.ufpb.meuguiaapi.dtos;
 import com.ufpb.meuguiaapi.domain.Attraction;
 import com.ufpb.meuguiaapi.domain.AttractionType;
 import com.ufpb.meuguiaapi.domain.MoreInfoLink;
-import com.ufpb.meuguiaapi.domain.TurismSegmentation;
+import com.ufpb.meuguiaapi.domain.TouristSegmentation;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -30,7 +27,7 @@ public class TuristAttractionDTO {
 
     private String fonte;
 
-    private List<TurismSegmentation> segmentations;
+    private List<TouristSegmentation> segmentations;
 
     private AttractionType attractionTypes;
 
@@ -53,7 +50,7 @@ public class TuristAttractionDTO {
         this.moreInfoLinkList = obj.getMoreInfoLinkList();
     }
 
-    public TuristAttractionDTO(Long id, String name, String description, String map_link, String city, String state, String image_link, String fonte, List<TurismSegmentation> segmentations, AttractionType attractionTypes, List<MoreInfoLink> moreInfoLinkList) {
+    public TuristAttractionDTO(Long id, String name, String description, String map_link, String city, String state, String image_link, String fonte, List<TouristSegmentation> segmentations, AttractionType attractionTypes, List<MoreInfoLink> moreInfoLinkList) {
         this.id = id;
         this.name = name;
         this.description = description;
