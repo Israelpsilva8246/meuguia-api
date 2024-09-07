@@ -1,6 +1,7 @@
 package com.ufpb.meuguiaapi.controller;
 
 import com.ufpb.meuguiaapi.domain.Attraction;
+import com.ufpb.meuguiaapi.domain.MoreInfoLink;
 import com.ufpb.meuguiaapi.dtos.TuristAttractionDTO;
 import com.ufpb.meuguiaapi.service.AttractionService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -60,9 +61,11 @@ public class AttractionController {
     )
     @PostMapping(value = "/create")
     public ResponseEntity<Attraction> create(@RequestBody Attraction obj) {
-        obj = attractionService.create(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-        return ResponseEntity.created(uri).build();
+        Attraction newObj = attractionService.create(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/turists/{id}")
+                .buildAndExpand(newObj.getId()).toUri();
+        return ResponseEntity.created(uri).body(obj);
     }
 
     @DeleteMapping(value = "/{id}")

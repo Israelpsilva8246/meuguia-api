@@ -1,7 +1,7 @@
 package com.ufpb.meuguiaapi.controller;
 
 import com.ufpb.meuguiaapi.domain.MoreInfoLink;
-import com.ufpb.meuguiaapi.domain.TurismSegmentation;
+import com.ufpb.meuguiaapi.domain.TouristSegmentation;
 import com.ufpb.meuguiaapi.dtos.TuristAttractionDTO;
 import com.ufpb.meuguiaapi.service.MoreInfoLinkService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -11,7 +11,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -78,13 +77,12 @@ public class MoreInfoLinkController {
             }
     )
     @PostMapping
-    public ResponseEntity<MoreInfoLink> create(@RequestParam(value = "attraction", defaultValue = "0") Long id_att,
-                                               @RequestBody MoreInfoLink obj) {
-        MoreInfoLink newObj = moreInfoLinkService.create(id_att, obj);
+    public ResponseEntity<MoreInfoLink> create(@RequestBody MoreInfoLink obj) {
+        MoreInfoLink newObj = moreInfoLinkService.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/more-info/{id}")
                 .buildAndExpand(newObj.getId()).toUri();
-        return ResponseEntity.created(uri).build();
+        return ResponseEntity.created(uri).body(obj);
     }
 
     @DeleteMapping(value = "/{id}")

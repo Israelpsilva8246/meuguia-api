@@ -1,6 +1,6 @@
 package com.ufpb.meuguiaapi.controller;
 
-import com.ufpb.meuguiaapi.domain.TurismSegmentation;
+import com.ufpb.meuguiaapi.domain.TouristSegmentation;
 import com.ufpb.meuguiaapi.dtos.TuristAttractionDTO;
 import com.ufpb.meuguiaapi.service.TurismSegmentationService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -10,7 +10,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -40,8 +39,8 @@ public class TurismSegmentationController {
             }
     )
     @GetMapping(value = "/{id}")
-    public ResponseEntity<TurismSegmentation> findById(@PathVariable Long id) {
-        TurismSegmentation obj = turismSegmentationService.findById(id);
+    public ResponseEntity<TouristSegmentation> findById(@PathVariable Long id) {
+        TouristSegmentation obj = turismSegmentationService.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
@@ -61,8 +60,8 @@ public class TurismSegmentationController {
             }
     )
     @GetMapping
-    public List<TurismSegmentation> findAll() {
-        List<TurismSegmentation> list = turismSegmentationService.findAll();
+    public List<TouristSegmentation> findAll() {
+        List<TouristSegmentation> list = turismSegmentationService.findAll();
         return ResponseEntity.ok().body(list).getBody();
     }
 
@@ -78,13 +77,12 @@ public class TurismSegmentationController {
             }
     )
     @PostMapping
-    public ResponseEntity<TurismSegmentation> create(@RequestParam(value = "attraction", defaultValue = "0") Long id_att,
-                                                     @RequestBody TurismSegmentation obj) {
-        TurismSegmentation newObj = turismSegmentationService.create(id_att, obj);
+    public ResponseEntity<TouristSegmentation> create(@RequestBody TouristSegmentation obj) {
+        TouristSegmentation newObj = turismSegmentationService.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/segmentations/{id}")
                 .buildAndExpand(newObj.getId()).toUri();
-        return ResponseEntity.created(uri).build();
+        return ResponseEntity.created(uri).body(obj);
     }
 
     @DeleteMapping(value = "/{id}")

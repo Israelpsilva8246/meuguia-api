@@ -40,13 +40,12 @@ public class AttractionTypeController {
             }
     )
     @PostMapping
-    public ResponseEntity<AttractionType> create(@RequestParam(value = "attraction", defaultValue = "0") Long id_att,
-                                                 @RequestBody AttractionType obj) {
-        AttractionType newObj = attractionTypeService.create(id_att, obj);
+    public ResponseEntity<AttractionType> create(@RequestBody AttractionType obj) {
+        AttractionType newObj = attractionTypeService.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/types/{id}")
                 .buildAndExpand(newObj.getId()).toUri();
-        return ResponseEntity.created(uri).build();
+        return ResponseEntity.created(uri).body(obj);
     }
 
     @DeleteMapping(value = "/{id}")
