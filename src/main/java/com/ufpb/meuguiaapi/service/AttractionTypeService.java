@@ -20,10 +20,8 @@ public class AttractionTypeService {
     @Autowired
     private AttractionService attractionService;
 
-    public AttractionType create(Long id_att, AttractionType obj) {
+    public AttractionType create(AttractionType obj) {
         obj.setId(null);
-        Attraction att = attractionService.findById(id_att);
-        obj.setAttraction(att);
         return attractionTypeRepository.save(obj);
     }
 

@@ -1,7 +1,6 @@
 package com.ufpb.meuguiaapi.service;
 
-import com.ufpb.meuguiaapi.domain.Attraction;
-import com.ufpb.meuguiaapi.domain.TurismSegmentation;
+import com.ufpb.meuguiaapi.domain.TouristSegmentation;
 import com.ufpb.meuguiaapi.exception.ObjectNotFoundException;
 import com.ufpb.meuguiaapi.repository.TurismSegmentationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,28 +21,26 @@ public class TurismSegmentationService {
     @Autowired
     private AttractionService attractionService;
 
-    public TurismSegmentation findById(Long id) {
-        Optional<TurismSegmentation> obj = turismSegmentationRepository.findById(id);
-        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! id: " + id + ", Tipo " + TurismSegmentation.class.getName()));
+    public TouristSegmentation findById(Long id) {
+        Optional<TouristSegmentation> obj = turismSegmentationRepository.findById(id);
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado! id: " + id + ", Tipo " + TouristSegmentation.class.getName()));
     }
 
-    public List<TurismSegmentation> findAll() {
-        List<TurismSegmentation> segmentations = turismSegmentationRepository.findAll();
+    public List<TouristSegmentation> findAll() {
+        List<TouristSegmentation> segmentations = turismSegmentationRepository.findAll();
 
         // Filtra para manter apenas as segmentações com nomes únicos
         return new ArrayList<>(segmentations.stream()
                 .collect(Collectors.toMap(
-                        TurismSegmentation::getName,  // Usa o nome como chave
+                        TouristSegmentation::getName,  // Usa o nome como chave
                         Function.identity(),          // Usa o próprio objeto TurismSegmentation como valor
                         (existing, replacement) -> existing // Em caso de duplicata, mantém o existente
                 ))
                 .values());
     }
 
-    public TurismSegmentation create(Long id_att, TurismSegmentation obj) {
+    public TouristSegmentation create(TouristSegmentation obj) {
         obj.setId(null);
-        Attraction att = attractionService.findById(id_att);
-        obj.setAttraction(att);
         return turismSegmentationRepository.save(obj);
     }
 
