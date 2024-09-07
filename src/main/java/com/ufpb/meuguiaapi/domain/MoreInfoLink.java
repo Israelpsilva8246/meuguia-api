@@ -19,18 +19,12 @@ public class MoreInfoLink {
     @Column(length = 200, nullable = false)
     private String description;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "attraction_id")
-    private Attraction attraction;
-
     public MoreInfoLink() {
     }
 
-    public MoreInfoLink(Long id, String link, String description, Attraction attraction) {
+    public MoreInfoLink(Long id, String link, String description) {
         this.id = id;
         this.link = link;
         this.description = description;
-        this.attraction = attraction;
     }
 }

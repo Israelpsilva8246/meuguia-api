@@ -36,19 +36,30 @@ public class Attraction {
     @Column(length = 300, nullable = false)
     private String fonte;
 
-    @OneToMany(mappedBy = "attraction")
-    private List<TurismSegmentation> segmentations = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(
+            name = "attraction_segmentation",
+            joinColumns = @JoinColumn(name = "attraction_id"),
+            inverseJoinColumns = @JoinColumn(name = "segmentation_id")
+    )
+    private List<TouristSegmentation> segmentations = new ArrayList<>();
 
-    @OneToOne(mappedBy = "attraction")
+    @OneToOne
+    @JoinTable(
+            name = "attraction_attractiontype",
+            joinColumns = @JoinColumn(name = "attraction_id"),
+            inverseJoinColumns = @JoinColumn(name = "attractiontype_id")
+    )
     private AttractionType attractionTypes;
 
-    @OneToMany(mappedBy = "attraction")
+    @OneToMany
+    @JoinColumn(name = "attraction_id")
     private List<MoreInfoLink> moreInfoLinkList = new ArrayList<>();
 
     public Attraction() {
     }
 
-    public Attraction(Long id, String name, String description, String map_link, String city, String state, String image_link, String fonte, List<TurismSegmentation> segmentations, AttractionType attractionTypes, List<MoreInfoLink> moreInfoLinkList) {
+    public Attraction(Long id, String name, String description, String map_link, String city, String state, String image_link, String fonte) {
         this.id = id;
         this.name = name;
         this.description = description;

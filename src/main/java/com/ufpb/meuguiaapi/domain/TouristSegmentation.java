@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-public class TurismSegmentation {
+public class TouristSegmentation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,18 +19,12 @@ public class TurismSegmentation {
     @Column(length = 200, nullable = false)
     private String description;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "attraction_id")
-    private Attraction attraction;
-
-    public TurismSegmentation() {
+    public TouristSegmentation() {
     }
 
-    public TurismSegmentation(Long id, String name, String description, Attraction attraction) {
+    public TouristSegmentation(Long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.attraction = attraction;
     }
 }
