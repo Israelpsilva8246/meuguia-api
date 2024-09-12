@@ -1,0 +1,417 @@
+{
+	"info": {
+		"_postman_id": "9786c657-b374-4511-8f2d-e5c13af039f1",
+		"name": "meuguia-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16098190"
+	},
+	"item": [
+		{
+			"name": "Create Attratction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Centro Cultural São Francisco\",\r\n    \"description\": \"O Centro Cultural funciona em um complexo arquitetônico formado pela Igreja e Convento de Santo Antônio, a Capela da Ordem Terceira de São Francisco, a Capela de São Benedito, a Casa de Oração dos Terceiros (chamada de Capela Dourada), o Claustro da Ordem Terceira, uma fonte e um grande adro com um cruzeiro, constituindo um dos mais notáveis testemunhos do Barroco no Brasil. Por sua importância, foi tombado pelo IPHAN. Ao ser fundada a igreja era dedicada a Santo Antônio, e aparentemente a troca de nome ocorreu o início do século XX, por força de um costume popular, mas ainda é conhecida também pela antiga denominação.\",\r\n    \"map_link\": \"https://maps.app.goo.gl/RTSUriaiFXWX37Eh7\",\r\n    \"city\": \"João Pessoa\",\r\n    \"state\": \"Paraiba\",\r\n    \"image_link\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/JoaoPessoa_ConventoSaoFrancisco.JPG/1280px-JoaoPessoa_ConventoSaoFrancisco.JPG\",\r\n    \"fonte\": \"Por Lionel Baur - Obra do próprio, CC BY 3.0\",\r\n    \"segmentations\": [\r\n        {\r\n            \"id\": 1,\r\n            \"name\": \"Turismo histórico-cultural (patrimônio histórico-cultural material e/ou imaterial)\",\r\n            \"description\": \"\"\r\n        }\r\n    ],\r\n    \"attractionTypes\": {\r\n        \"id\": 2,\r\n        \"name\": \"Unidade de Conservação/Preservação Ambiental\",\r\n        \"description\": \"\"\r\n    },\r\n    \"moreInfoLinkList\": [\r\n        {\r\n            \"id\": 3,\r\n            \"link\": \"https://guia.melhoresdestinos.com.br/centro-cultural-sao-francisco-109-2210-l.html\",\r\n            \"description\": \"guia.melhoresdestinos.com.br\",\r\n            \"attraction\": null\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/turists/create",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"turists",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Attraction",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/turists",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"turists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Segmentations",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Turismo histórico-cultural (patrimônio histórico-cultural material e/ou imaterial)\",\r\n    \"description\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/segmentations",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"segmentations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Segmentations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/segmentations",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"segmentations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Types",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Unidade de Conservação/Preservação Ambiental\",\r\n    \"description\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/types",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Types",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/types",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST more-info",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"link\": \"https://guia.melhoresdestinos.com.br/centro-cultural-sao-francisco-109-2210-l.html\",\r\n    \"description\": \"guia.melhoresdestinos.com.br\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/more-info",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"more-info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET more-info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/more-info",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"more-info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Types Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/types",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/segmentations?attraction=3",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"segmentations"
+					],
+					"query": [
+						{
+							"key": "attraction",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FindByName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/turists/byName?name=Praia de Cabo Branco",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"turists",
+						"byName"
+					],
+					"query": [
+						{
+							"key": "segment",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Praia de Cabo Branco"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Segmentations",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/segmentations/36",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"segmentations",
+						"36"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Attraction",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/turists/4",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"turists",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Types",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/types/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"types",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get por segmentação",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/turists/bySegmentations?segmentations=Turismo histórico-cultural (patrimônio histórico-cultural material e/ou imaterial)",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"turists",
+						"bySegmentations"
+					],
+					"query": [
+						{
+							"key": "segmentations",
+							"value": "Turismo histórico-cultural (patrimônio histórico-cultural material e/ou imaterial)"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get por tipo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/turists/byType?attractionTypes=Museu",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"turists",
+						"byType"
+					],
+					"query": [
+						{
+							"key": "attractionTypes",
+							"value": "Museu"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE more-info",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/more-info/13",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"more-info",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Attraction",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Vila Sítio São João\",\r\n    \"description\": \"A Vila Sítio São João reproduz o cotidiano de uma vila do passado no interior, numa área de 2,8 hectares. Oferecendo atrações musicais e pratos típicos, consagrou-se como espaço de valorização da cultura nordestina, sendo uma das atrações do período junino em Campina Grande.\",\r\n    \"map_link\": \"https://goo.gl/maps/HkMkZXbMwhtzbGJK9\",\r\n    \"city\": \"Campina Grande\",\r\n    \"state\": \"Paraiba\",\r\n    \"image_link\": \"https://i1.wp.com/observatorioturismopb.com.br/wp-content/uploads/2022/06/34257687302_332f7cf29e_o-Dani-Rodrigues-1024x683.jpg\",\r\n    \"fonte\": \"Vila Sítio São João(Campina Grande, PB) - Foto: Kyller Costa (Flyckr)\",\r\n    \"segmentations\": [\r\n        {\r\n            \"id\": 31,\r\n            \"name\": \"Turismo histórico-cultural (patrimônio histórico-cultural material e/ou imaterial)\",\r\n            \"description\": \"\"\r\n        },\r\n        {\r\n            \"id\": 27,\r\n            \"name\": \"Turismo de entretenimento e lazer\",\r\n            \"description\": \"\"\r\n        }\r\n    ],\r\n    \"attractionTypes\": {\r\n        \"id\": 8,\r\n        \"name\": \"Empreendimento de eventos (Teatro/Casa de Shows/Centro de convenções)\",\r\n        \"description\": \"\"\r\n    },\r\n    \"moreInfoLinkList\": [\r\n        {\r\n            \"id\": 47,\r\n            \"link\": \"https://www.instagram.com/vila_sitiosaojoao/\",\r\n            \"description\": \"@vila_sitiosaojoao\"\r\n        },\r\n        {\r\n            \"id\": 48,\r\n            \"link\": \"https://www.facebook.com/SitioSaoJoao/\",\r\n            \"description\": \"Sítio São João no Facebook\"\r\n        },\r\n        {\r\n            \"id\": 49,\r\n            \"link\": \"https://www.vivacampina.com.br/evento/vila-sitio-sao-joao-1\",\r\n            \"description\": \"Site Viva Campina\"\r\n        },\r\n        {\r\n            \"id\": 50,\r\n            \"link\": \"https://www.paraibacriativa.com.br/artista/vila-sitio-sao-joao/\",\r\n            \"description\": \"Site Paraíba Criativa\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/turists/82",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"turists",
+						"82"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
