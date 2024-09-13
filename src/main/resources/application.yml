@@ -20,8 +20,3 @@ spring:
         temp:
           use_jdbc_metadata_defaults: false
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
-  flyway:
-    baseline-on-migrate: false
-    enabled: false
-    locations: classpath:/db/migration
