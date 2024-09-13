@@ -9,11 +9,8 @@ import javax.persistence.*;
 @Entity
 public class TouristSegmentation {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tourist_seq")
-//    @SequenceGenerator(name = "tourist_seq", sequenceName = "tourist_sequence", allocationSize = 11)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(length = 200, nullable = false)

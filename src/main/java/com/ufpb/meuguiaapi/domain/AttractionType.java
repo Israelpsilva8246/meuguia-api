@@ -11,11 +11,9 @@ import java.util.List;
 @Entity
 public class AttractionType {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "attractiontype_seq")
-//    @SequenceGenerator(name = "attractiontype_seq", sequenceName = "attractiontype_sequence", allocationSize = 1)
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(length = 200, nullable = false)

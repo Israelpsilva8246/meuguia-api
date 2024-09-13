@@ -7,15 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Entity
 @Data
+@Entity
 public class Attraction {
 
-
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "attraction_seq")
-//    @SequenceGenerator(name = "attraction_seq", sequenceName = "attraction_sequence", allocationSize = 1)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(length = 200, nullable = false)

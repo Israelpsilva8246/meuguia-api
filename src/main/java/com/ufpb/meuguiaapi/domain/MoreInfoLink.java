@@ -9,11 +9,8 @@ import javax.persistence.*;
 @Entity
 public class MoreInfoLink {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "moreinfolink_seq")
-//    @SequenceGenerator(name = "moreinfolink_seq", sequenceName = "moreinfolink_sequence", allocationSize = 1)
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(length = 200, nullable = false)
